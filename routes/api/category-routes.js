@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Category.fineOne({
+  Category.findOne({
     where: {
       id: req.params.id
     },
@@ -34,7 +34,12 @@ router.put('/:id', (req, res) => {
     {
       id: req.body.id,
       category_name: req.body.category_name
+    },
+    {
+    where: {
+      id: req.params.id
     }
+  }
   ).then((updatedCat) => {
     res.json(updatedCat)
   })

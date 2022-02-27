@@ -22,7 +22,10 @@ router.get('/:id', (req, res) => {
         model: Tag,
         through: ProductTag
       }]
+  }).then((prodData) => {
+    res.json(prodData)
   })
+  .catch((err) => res.json(err))
 });
 
 // create new product
